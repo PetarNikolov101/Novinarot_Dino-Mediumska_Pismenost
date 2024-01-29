@@ -6,13 +6,13 @@ class Button:
         self.screen_rect = self.screen.get_rect()
         
         self.width, self.height = 100, 40
-        self.button_color = (102, 255, 255)
+        self.button_color = (110,123,204)
         self.text_color = (0, 0, 0)
         self.font = pygame.font.Font(None, 30)
         
         self.rect = pygame.Rect(0, 0, self.width, self.height)
-        self.rect.x = 400
-        self.rect.y = 200
+        self.rect.x = 470
+        self.rect.y = 220
         
         self.msg_image = self.font.render("PLAY", True, self.text_color, self.button_color)
         self.msg_image_rect = self.msg_image.get_rect()
