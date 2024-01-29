@@ -8,7 +8,7 @@ class MediumskaNepismenost:
         self.bg_color = (0,0,0)
         self.running = False
         pygame.display.set_caption("MIK")
-        self.background = pygame.image.load('2210_w026_n002_2557b_p1_2557.jpg')
+        self.background = pygame.image.load('./images/2210_w026_n002_2557b_p1_2557.jpg')
         
         self.button = Button(self)
     
