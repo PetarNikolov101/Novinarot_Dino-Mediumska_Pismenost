@@ -5,6 +5,7 @@ from button import FactCheckButton
 from main_character import MainCharacter
 from interactibles import Telefon
 from interactibles import Rat
+from text_box import TextBox
 
 class MediumskaNepismenost:
     def __init__(self):
@@ -23,11 +24,13 @@ class MediumskaNepismenost:
         self.fact_check_button = FactCheckButton(self)
         self.telefon = Telefon(self)
         self.rat = Rat(self)
+        self.textbox = TextBox(self)
     
     def check_collisions(self):
         if self.dino.rect.colliderect(self.rat.rect) or self.dino.rect.colliderect(self.telefon.rect):
             self.post_button.draw_button()
             self.fact_check_button.draw_button()
+            self.textbox.blitme()
             
     def _check_events(self):
         for event in pygame.event.get():
