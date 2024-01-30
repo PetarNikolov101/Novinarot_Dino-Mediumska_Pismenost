@@ -30,7 +30,7 @@ class PostButton(Button):
         self.width, self.height = 100, 40
         self.rect = pygame.Rect(0, 0, self.width, self.height)
         self.rect.x = 350
-        self.rect.y = 400
+        self.rect.y = 380
         self.msg_image = self.font.render("POST", True, self.text_color, self.button_color)
         self.msg_image_rect = self.msg_image.get_rect()
         self.msg_image_rect.center = self.rect.center
@@ -41,8 +41,8 @@ class FactCheckButton(Button):
         super().__init__(main)
         self.width, self.height = 165, 40
         self.rect = pygame.Rect(0, 0, self.width, self.height)
-        self.rect.x = 590
-        self.rect.y = 400
+        self.rect.x = 600
+        self.rect.y = 380
         self.msg_image = self.font.render("FACT-CHECK", True, self.text_color, self.button_color)
         self.msg_image_rect = self.msg_image.get_rect()
         self.msg_image_rect.center = self.rect.center
