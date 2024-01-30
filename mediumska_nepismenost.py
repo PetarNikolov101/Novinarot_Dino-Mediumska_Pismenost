@@ -1,6 +1,7 @@
 import pygame
 from button import Button
 from main_character import MainCharacter
+from interactibles import Telefon
 
 class MediumskaNepismenost:
     def __init__(self):
@@ -11,9 +12,10 @@ class MediumskaNepismenost:
         self.running = False
         pygame.display.set_caption("MIK")
         self.background = pygame.image.load('./images/2210_w026_n002_2557b_p1_2557.jpg')
-        
+    
         self.dino = MainCharacter(self)
         self.button = Button(self)
+        self.telefon = Telefon(self)
     
     def _check_events(self):
         for event in pygame.event.get():
@@ -50,6 +52,7 @@ class MediumskaNepismenost:
             self.dino.update()
             self.screen.blit(self.background, (0, 0))
             self.dino.blitme()
+            self.telefon.blitme()
             pygame.display.flip()
 game = MediumskaNepismenost()
 game.game_loop()
