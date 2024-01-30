@@ -1,7 +1,8 @@
 import pygame
-from button import Button
+from button import StartButton
 from main_character import MainCharacter
 from interactibles import Telefon
+from interactibles import Rat
 
 class MediumskaNepismenost:
     def __init__(self):
@@ -10,12 +11,14 @@ class MediumskaNepismenost:
         self.screen = pygame.display.set_mode((1080, 450))
         self.bg_color = (0,0,0)
         self.running = False
+        self.running_start = True
         pygame.display.set_caption("MIK")
         self.background = pygame.image.load('./images/2210_w026_n002_2557b_p1_2557.jpg')
     
         self.dino = MainCharacter(self)
-        self.button = Button(self)
+        self.button = StartButton(self)
         self.telefon = Telefon(self)
+        self.rat = Rat(self)
     
     def _check_events(self):
         for event in pygame.event.get():
@@ -33,10 +36,10 @@ class MediumskaNepismenost:
                     self.dino.moving_left = False
 
     def game_loop(self):   
-        while not self.running:
+        while not self.running and self.running_start is True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    self.running = False
+                    self.running_start = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = pygame.mouse.get_pos()
                     if self.button.rect.collidepoint(mouse_pos):
@@ -51,8 +54,10 @@ class MediumskaNepismenost:
             self._check_events()
             self.dino.update()
             self.screen.blit(self.background, (0, 0))
+            self.rat.blitme()
             self.dino.blitme()
             self.telefon.blitme()
             pygame.display.flip()
+            
 game = MediumskaNepismenost()
 game.game_loop()

@@ -1,6 +1,6 @@
 import pygame
 
-class Button:
+class StartButton:
     def __init__(self, main):
         self.screen = main.screen
         self.screen_rect = self.screen.get_rect()
