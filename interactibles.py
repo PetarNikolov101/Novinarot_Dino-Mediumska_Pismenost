@@ -21,8 +21,8 @@ class Rat:
         self.rect = self.rat.get_rect()
         self.screen = main.screen
         self.screen_rect = self.screen.get_rect()
-        self.rect.x = 800
-        self.rect.y = 318
+        self.rect.x = 780
+        self.rect.y = 357
     
     def blitme(self):
         self.screen.blit(self.rat, self.rect)
