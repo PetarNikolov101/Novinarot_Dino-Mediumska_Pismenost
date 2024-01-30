@@ -1,5 +1,7 @@
 import pygame
 from button import StartButton
+from button import PostButton
+from button import FactCheckButton
 from main_character import MainCharacter
 from interactibles import Telefon
 from interactibles import Rat
@@ -16,10 +18,17 @@ class MediumskaNepismenost:
         self.background = pygame.image.load('./images/2210_w026_n002_2557b_p1_2557.jpg')
     
         self.dino = MainCharacter(self)
-        self.button = StartButton(self)
+        self.start_button = StartButton(self)
+        self.post_button = PostButton(self)
+        self.fact_check_button = FactCheckButton(self)
         self.telefon = Telefon(self)
         self.rat = Rat(self)
     
+    def check_collisions(self):
+        if self.dino.rect.colliderect(self.rat.rect) or self.dino.rect.colliderect(self.telefon.rect):
+            self.post_button.draw_button()
+            self.fact_check_button.draw_button()
+            
     def _check_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -42,11 +51,11 @@ class MediumskaNepismenost:
                     self.running_start = False
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = pygame.mouse.get_pos()
-                    if self.button.rect.collidepoint(mouse_pos):
+                    if self.start_button.rect.collidepoint(mouse_pos):
                         self.running = True
                         
             self.screen.fill(self.bg_color)
-            self.button.draw_button()
+            self.start_button.draw_button()
             pygame.display.flip()
              
         while self.running:
@@ -55,8 +64,9 @@ class MediumskaNepismenost:
             self.dino.update()
             self.screen.blit(self.background, (0, 0))
             self.rat.blitme()
-            self.dino.blitme()
             self.telefon.blitme()
+            self.dino.blitme()
+            self.check_collisions()
             pygame.display.flip()
             
 game = MediumskaNepismenost()

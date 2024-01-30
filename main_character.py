@@ -2,7 +2,6 @@ import pygame
 
 class MainCharacter:
     def __init__(self, main):
-        pygame.init()
         self.dino = pygame.image.load("./images/dino.png")
         self.dino_run_right = pygame.image.load("./images/run_right.png")
         self.dino_run_left = pygame.image.load("./images/run_left.png")
