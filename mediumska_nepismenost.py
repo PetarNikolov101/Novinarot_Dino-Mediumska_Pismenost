@@ -47,19 +47,13 @@ class MediumskaNepismenost:
                     self.text = Text(self, data.get('rat_start'))
                 else:
                     self.text = Text(self, data.get("phone_start"))
-                self.text.blitme()
-    
-    def fact_check(self):
-        self.start_flag = False
-        with open('text.json', 'r', encoding='utf-8') as jsonfile:
-            data = json.load(jsonfile)
-        if self.fact_flag:    
-            if self.dino.rect.colliderect(self.rat.rect):
-                self.text = Text(self,data.get('rat_factcheck'))
-            elif self.dino.rect.colliderect(self.telefon.rect):
-                self.text = Text(self,data.get("phone_factcheck"))
+            if self.fact_flag:    
+                if self.dino.rect.colliderect(self.rat.rect):
+                    self.text = Text(self,data.get('rat_factcheck'))
+                elif self.dino.rect.colliderect(self.telefon.rect):
+                    self.text = Text(self,data.get("phone_factcheck"))
             self.text.blitme()
-      
+          
     def change_flag(self):
         if self.dino.moving_left or self.dino.moving_right:
             self.start_flag = True 
@@ -109,7 +103,6 @@ class MediumskaNepismenost:
                     self.add_points()
                 elif self.fact_check_button.rect.collidepoint(mouse_pos):
                     self.fact_flag = True
-                    self.fact_check()
 
     def game_loop(self):   
         while not self.running and self.running_start is True:
