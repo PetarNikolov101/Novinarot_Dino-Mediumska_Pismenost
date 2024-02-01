@@ -5,7 +5,7 @@ class Text:
     def __init__(self, main, text):
         self.screen = main.screen
         self.text = text
-        self.font = pygame.font.Font(None, 25)
+        self.font = pygame.font.Font(pygame.font.get_default_font(), 17)
         self.text_color = (0, 0, 0)
         self.rendered_lines = self.prerender_text()
 
