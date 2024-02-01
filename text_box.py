@@ -7,12 +7,10 @@ class Text:
         self.text = text
         self.font = pygame.font.Font(None, 25)
         self.text_color = (0, 0, 0)
-
         self.rendered_lines = self.prerender_text()
 
     def prerender_text(self):
         text_wrapped = textwrap.wrap(self.text, width=50)
-
         rendered_lines = []
         for line in text_wrapped:
             line_image = self.font.render(line, True, self.text_color)
@@ -31,6 +29,7 @@ class Box:
         self.screen = main.screen
         self.text_box = pygame.Surface([640,480], pygame.SRCALPHA, 32)
         self.text_box = self.text_box.convert_alpha()
-        self.rect = pygame.draw.rect(self.text_box, (110, 123, 204, 150), (165, 50, 460, 260))
+        self.rect = pygame.draw.rect(self.text_box, (110, 123, 204, 170), (165, 50, 460, 260))
     def blitme(self):
         self.screen.blit(self.text_box, self.rect)
+        
