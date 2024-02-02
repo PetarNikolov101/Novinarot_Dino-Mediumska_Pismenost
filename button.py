@@ -6,7 +6,7 @@ class Button:
         self.screen_rect = self.screen.get_rect()  
         self.button_color = (110,123,204)
         self.text_color = (0, 0, 0)
-        self.font = pygame.font.Font(None, 30)
+        self.font = pygame.font.Font(pygame.font.get_default_font(), 23)
         
     def draw_button(self):
         self.screen.fill(self.button_color, self.rect)
@@ -23,7 +23,6 @@ class StartButton(Button):
         self.msg_image_rect = self.msg_image.get_rect()
         self.msg_image_rect.center = self.rect.center
         
-
 class PostButton(Button):
     def __init__(self, main):
         super().__init__(main)
@@ -34,8 +33,7 @@ class PostButton(Button):
         self.msg_image = self.font.render("POST", True, self.text_color, self.button_color)
         self.msg_image_rect = self.msg_image.get_rect()
         self.msg_image_rect.center = self.rect.center
-
-        
+      
 class FactCheckButton(Button):
     def __init__(self, main):
         super().__init__(main)
